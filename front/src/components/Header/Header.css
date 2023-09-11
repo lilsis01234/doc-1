@@ -47,14 +47,16 @@ header {
 }
 
 .logo h1 {
-    font-family: "Regular", sans-serif;
     color: var(--red);
     font-weight: bold;
-    font-size: 2rem;
+    font-size: 3rem;
+    font-family: logo;
 }
 
-h1 span{
-    color: rgb(0, 38, 255);
+.logo h1 span{
+    color: rgb(0, 102, 255);
+    font-family: logo;
+
 }
 
 .navigation {
@@ -210,6 +212,8 @@ li a:nth-child(1):active {
     font-size: 1.1rem;
     font-weight: 500;
     transition: .3s ease;
+    box-shadow: rgba(0, 0, 0, 0.155) 0px 3px 8px;
+
 }
 
 .login__logout button:hover {
@@ -300,13 +304,24 @@ li a:nth-child(1):active {
 
 @media screen and (max-width: 780px) {
 
-    header {
+    .logo h1 {
+        font-size: 2rem;
+    }
+
+    .header {
         display: block;
     }
 
     .login__logout {
         width: 40vw;
     }
+
+    .login__logout button {
+        /* margin-right: 2rem; */
+        margin-left: 1rem;
+
+    }
+
 }
 
 @media screen and (max-width: 700px) {

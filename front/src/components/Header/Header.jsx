@@ -5,25 +5,25 @@ import { useRef } from 'react'
 
 const Header = () => {
 
-  const headerRef = useRef(null);
+  // const headerRef = useRef(null);
 
-  const stickyHeaderFunc = () => {
-    window.addEventListener("scroll", () => {
-      if(
-        document.body.scrollTop > 0 ||
-        document.documentElement.scrollTop > 0
-      ) {
-        headerRef.current.classList.add("sticky");
-      } else {
-        headerRef.current.classList.remove("sticky");
-      }
-    });
-  };
+  // const stickyHeaderFunc = () => {
+  //   window.addEventListener("scroll", () => {
+  //     if(
+  //       document.body.scrollTop > 0 ||
+  //       document.documentElement.scrollTop > 0
+  //     ) {
+  //       headerRef.current.classList.add("sticky");
+  //     } else {
+  //       headerRef.current.classList.remove("sticky");
+  //     }
+  //   });
+  // };
 
-  useEffect(() => {
-    stickyHeaderFunc();
-    return () => window.removeEventListener("scroll", stickyHeaderFunc);
-  })
+  // useEffect(() => {
+  //   stickyHeaderFunc();
+  //   return () => window.removeEventListener("scroll", stickyHeaderFunc);
+  // })
 
   const showOrHideMenu = () => {
     const navlinks = document.querySelector(".menu")
@@ -32,7 +32,7 @@ const Header = () => {
 
   return (
 
-    <header className='header' ref={headerRef}>
+    <header className='header' >
           <div className="nav__wrapper">
 
             <div onClick={showOrHideMenu} className="mobile__menu">
@@ -73,7 +73,6 @@ const Header = () => {
                   </NavLink>
                 </li>
               </ul>
-
 
             </div>
               <div className="login__logout">
