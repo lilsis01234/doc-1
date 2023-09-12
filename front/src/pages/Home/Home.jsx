@@ -1,6 +1,7 @@
 import "./Home.css"
 import sary from '../../assets/sarydokoteraaxemple.png'
 
+
 const Home = () => {
     return (
       <section id="home">
