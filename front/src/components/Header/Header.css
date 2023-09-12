@@ -1,0 +1,347 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
+    text-decoration: none;
+    list-style: none;
+}
+
+header {
+    top: 0;
+    width: 100%;
+    box-shadow: rgb(43 59 59 / 10%) 0 4px 16px;
+    animation: invapparition 1s ease;
+}
+
+.header {
+    width: 100%;
+    height: 90px;
+    line-height: 90px;
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    transition: .1s ease;
+    z-index: 10;
+}
+
+.header.sticky {
+    box-shadow: 13px 13px 20px #cbced1, -13px -13px 20px #fff;
+    position: fixed;
+    height: 80px;
+    line-height: 80px;
+    z-index: 10;
+}
+
+.nav__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.logo h1 {
+    color: var(--red);
+    font-weight: bold;
+    font-size: 3rem;
+    font-family: logo;
+}
+
+.logo h1 span{
+    color: rgb(0, 102, 255);
+    font-family: logo;
+
+}
+
+.navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* border: 1px solid red; */
+    width: 50vw;
+}
+
+.navigation ul {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 0;
+    /* border: 1px solid rebeccapurple; */
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    column-gap: 3rem;
+}
+
+.nav__item a {
+    cursor: pointer;
+    font-size: 1rem;
+    transition: 6 ease-in-out;
+}
+
+.navigation ul li a {
+    color: black;
+    font-weight: 700;
+    position: relative;
+    transition: .3s;
+}
+
+ul li{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+li span img {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: .2rem;
+    margin-bottom: 5px;
+    transition: .5s;
+}
+
+li a:nth-child(1):hover {
+    transform: scale(1.1);
+}
+
+li a:nth-child(1):active {
+    transform: scale(1);
+}
+
+.navigation ul li a:hover::after {
+    transform: scale(1);
+    transform-origin: left;
+}
+
+.nav__item a:hover {
+    color: rgb(4, 187, 4);
+    cursor: pointer;
+    transition: .3 ease-in-out;
+}
+
+.mobile__menu {
+    position: absolute;
+    transform: translateX(-200px);
+    transition: .6s ease;
+    margin-top: 15px;
+    left: 5vw;
+}
+
+.mobile__menu span {
+    font-size: 1rem;
+    cursor: pointer;
+    color: var(--red);
+    transition: .2s ease;
+}
+
+.mobile__menu span:active {
+    transform: scale(.9);
+}
+
+.mobile__menu__close {
+    position: absolute;
+    display: none;
+    cursor: pointer;
+    color: var(--red);
+    transition: .2s ease;
+}
+
+.mobile__menu__close:hover {
+    transform: rotate(90deg);
+}
+
+.mobile__menu__close i {
+    font-size: 2rem;
+    transition: .3s ease;
+}
+
+.mobile__menu__close i:hover {
+    transform: scale(1.1);
+}
+
+.mobile__menu__close i:active {
+    transform: scale(1);
+}
+
+.menu.active {
+    transform: translateX(0);
+}
+
+.nav__item .nav__active {
+    color: rgb(4, 187, 4);
+    transform: scale(1.3);
+}
+
+.nav__item .nav__active::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: var(--red);
+    border-radius: 5px;
+    left: 0;
+    bottom: 20px;
+    transform-origin: right;
+    transition: transform .5s;
+}
+
+/* ---------------------- login__logout ------------------------ */
+
+.login__logout {
+    /* border: 1px solid green; */
+    display: flex;
+    width: 50vw;
+    justify-content: flex-end;
+}
+
+.login__logout button {
+    border: none;
+    outline: none;
+    margin-right: 2rem;
+    /* margin-left: 2rem; */
+    background: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: .3s ease;
+    box-shadow: rgba(0, 0, 0, 0.155) 0px 3px 8px;
+
+}
+
+.login__logout button:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+.login__logout button:active {
+    transform: scale(1);
+}
+
+.login__logout .login button {
+    border: 1px solid ;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    padding: 15px 20px 15px 20px;
+}
+
+.login__logout .login button:hover {
+    border: 1px solid rgb(0, 102, 255);
+}
+
+.login__logout .logout button{
+    background: rgb(0, 102, 255);
+    border-radius: 10px;
+    padding: 15px 20px 15px 20px;
+    color: #fff;
+}
+/* ---------------------- login__logout ------------------------ */
+/* ---------------------------------------------MEDIA QUERY--------------------------------------*/
+@media screen and (max-width: 1200px) {
+    .navigation .menu {
+        column-gap: 2rem;
+
+    }
+}
+
+
+@media screen and (max-width: 1000px) {
+    .mobile__menu {
+        transform: translateX(0);
+    }
+
+    /* -----------NAVIGATION MENU ----------*/
+    
+    .navigation .menu{
+        position: relative;
+        transform: translateX(-270px);
+        position: fixed;
+        display: flex;
+        flex-direction: column;
+        background-color: rgba(129, 129, 129, 0) !important;
+        backdrop-filter: blur(15px);
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 250px;
+        align-items: center;
+        color: black;
+        border-right: 2px solid rgb(234, 234, 234);
+        /* box-shadow:  1px 2px 15px 3px #121212; */
+        transition: .6s ease;
+        z-index: 100;
+    }
+
+    .mobile__menu__close {
+        top: 0;
+        right: 15px;
+        display: block;
+    }
+
+    .menu.active {
+        transform: translateX(0);
+    }
+
+    
+    /* -----------NAVIGATION MENU ----------*/
+
+    .logo {
+        position: absolute;
+        left: 20%;
+        transform: translateX(-50%);
+    }
+}
+
+
+/* ---------------------700PX ------------------------*/
+
+@media screen and (max-width: 780px) {
+
+    .logo h1 {
+        font-size: 2rem;
+    }
+
+    .header {
+        display: block;
+    }
+
+    .login__logout {
+        width: 40vw;
+    }
+
+    .login__logout button {
+        /* margin-right: 2rem; */
+        margin-left: 1rem;
+
+    }
+
+}
+
+@media screen and (max-width: 700px) {
+    .logo {
+        position: absolute;
+        left: 15vw;
+        transform: translateX(-50%);
+    }
+
+    .mobile__menu {
+        position: absolute;
+        top: 70px;
+        left: 20px;
+        
+    }
+    
+}
+
+/* ---------------------500PX ------------------------*/
+
+@media screen and (max-width: 500px) {
+
+}
