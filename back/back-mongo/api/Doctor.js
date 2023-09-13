@@ -10,7 +10,7 @@ const bcrypt = require('bcrypt');
 const saltRounds = 10; // Adjust the number of salt rounds as needed
 
 router.post('/inscriptionDoctor', async (req, res) => {
-    let { name, firstname, contact, speciality, experience, email, password, Role2 } = req.body;
+    let { name, firstname, contact, speciality, experience, email, password, Role } = req.body;
 
     if (name == "" || firstname == "" || contact == "" || speciality == "" || experience == "") {
         res.json({
@@ -46,7 +46,7 @@ router.post('/inscriptionDoctor', async (req, res) => {
             email,
             password: hashedPassword,
             compte,
-            Role2 // Assuming `role2` is already a valid ObjectId
+            Role
         });
 
         const savedCompteDoctor = await newCompteDoctor.save();
