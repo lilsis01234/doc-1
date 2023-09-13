@@ -11,7 +11,7 @@ const RendezVousSchema = new Schema({
         ref:'Doctor'
     },
     contenu : String,
-    pieceJointes: File,
+    pieceJointes: FileList,
     date: Date
 })
 
