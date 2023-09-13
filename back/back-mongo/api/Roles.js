@@ -34,6 +34,13 @@ router.post('/addRole',(req,res)=>{
 
 
 router.get('/getRole',(req,res)=>{
-    
+    Role.find({})
+    .then((role) => {
+        res.json(role); // Send the JSON response
+    })
+    .catch((err) => {
+        console.error(err);
+        res.status(500).json({ error: 'Erreur lors de la récupération des données.' });
+    });
 })
 module.exports = router
