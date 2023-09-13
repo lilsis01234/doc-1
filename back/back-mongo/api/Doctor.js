@@ -3,51 +3,69 @@ const router = express.Router()
 
 const Doctor = require('../models/Doctor')
 
-const bcrypt = require('bcrypt')
+const CompteDoctor = require('../models/CompteDoctor')
 
 //inscription
-router.post('/inscriptionDoctor', (req, res) => {
-    let {name, firstname, contact, speciality, experience} = req.body
-    name = name.trim()
-    firstname = firstname.trim()
-    contact = contact.trim()
-    speciality = speciality.trim()
-    experience = experience.trim()
+const bcrypt = require('bcrypt');
+const saltRounds = 10; // Adjust the number of salt rounds as needed
+
+router.post('/inscriptionDoctor', async (req, res) => {
+    let { name, firstname, contact, speciality, experience, email, password, Role2 } = req.body;
 
     if (name == "" || firstname == "" || contact == "" || speciality == "" || experience == "") {
         res.json({
             status: "FAILED",
             message: "Empty input fields!"
-        })
-    } else if (!/^[a-zA-Z]*$/.test(name)) {
+        });
+        return;
+    }
+
+    if (!/^[a-zA-Z]*$/.test(name)) {
         res.json({
             status: "FAILED",
             message: "Invalid name entered"
-        })
-    } else{
+        });
+        return;
+    }
+
+    try {
+        const hashedPassword = await bcrypt.hash(password, saltRounds);
+
         const newDoctor = new Doctor({
-        name,
-        firstname,
-        contact,
-        speciality,
-        experience
-        })
+            name,
+            firstname,
+            contact,
+            speciality,
+            experience
+        });
 
-        newDoctor.save().then(result => {
-            res.json({
+        const savedDoctor = await newDoctor.save();
+        const compte = savedDoctor.id;
+
+        const newCompteDoctor = new CompteDoctor({
+            email,
+            password: hashedPassword,
+            compte,
+            Role2 // Assuming `role2` is already a valid ObjectId
+        });
+
+        const savedCompteDoctor = await newCompteDoctor.save();
+
+        res.json({
             status: "SUCCESS",
-            message: "Inscription reussi",
-            date: result,
-            })
-        })
-        .catch(err => {
-        res.json(err)
-        })
-    }})
+            message: "Inscription réussie",
+            date: savedCompteDoctor, // You can change this to `savedCompteDoctor` if needed
+        });
+    } catch (err) {
+        res.json(err);
+    }
+});
 
-module.exports = router
 
+//profil du docteur
 router.get('/doctor/:id',(req,res)=>{
     const id = req.params.id;
     Doctor.findById(id)
 })
+module.exports = router
+
